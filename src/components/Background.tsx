@@ -23,10 +23,10 @@ export interface BackgroundProps {
 }
 
 function artUrl(n: number) {
-  return `/art/desktop/wallpaper-${n}.jpg`
+  return import.meta.env.BASE_URL + `art/desktop/wallpaper-${n}.jpg`
 }
 export function charaUrl(n: number) {
-  return `/art/mobile/chara-${n}.jpg`
+  return import.meta.env.BASE_URL + `art/mobile/chara-${n}.jpg`
 }
 
 export function Background({
@@ -86,7 +86,7 @@ export function Background({
         <video
           ref={videoRef}
           className={`bg__video ${videoReady ? 'is-ready' : ''}`}
-          src={video}
+          src={import.meta.env.BASE_URL + video}
           poster={poster}
           muted
           loop
