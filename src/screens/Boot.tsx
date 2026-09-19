@@ -66,8 +66,8 @@ export function Boot() {
         focus="center"
         dim={0.55}
         position="70% center"
-        video={import.meta.env.BASE_URL + "video/boot-loop.mp4"}
-        poster={import.meta.env.BASE_URL + "video/boot-poster.jpg"}
+        video="video/boot-loop.mp4"
+        poster="video/boot-poster.jpg"
         videoDelay={reducedMotion ? 0 : 3300}
       />
 
