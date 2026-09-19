@@ -1,0 +1,70 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-fast);
+  will-change: transform;
+}
+.cursor.is-visible {
+  opacity: 1;
+}
+
+/* the blade's tip sits on the pointer (hotspot 2,2 of the 32-box) */
+.cursor__blade {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  overflow: visible;
+  transform-origin: 2px 2px;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6));
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    opacity var(--dur-fast);
+}
+
+/* the reticle is centred on the pointer */
+.cursor__reticle {
+  position: absolute;
+  left: -16px;
+  top: -16px;
+  overflow: visible;
+  transform-origin: 16px 16px;
+  transform: scale(0.5);
+  opacity: 0;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6));
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    opacity var(--dur-fast);
+}
+.cursor__ring {
+  transform-origin: 16px 16px;
+  animation: cursor-spin 6s linear infinite;
+}
+@keyframes cursor-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+[data-motion='reduced'] .cursor__ring {
+  animation: none;
+}
+
+.cursor--hover .cursor__blade {
+  opacity: 0;
+  transform: scale(0.6);
+}
+.cursor--hover .cursor__reticle {
+  opacity: 1;
+  transform: scale(1);
+}
+.cursor--down .cursor__blade {
+  opacity: 0;
+  transform: scale(0.6);
+}
+.cursor--down .cursor__reticle {
+  opacity: 1;
+  transform: scale(0.8) rotate(45deg);
+}
