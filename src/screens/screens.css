@@ -1,0 +1,7 @@
+/* ── Shared bits used across screens ───────────────────────────────────── */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
